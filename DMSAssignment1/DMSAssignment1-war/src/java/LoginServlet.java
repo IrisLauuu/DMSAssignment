@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
         }else if(request.getParameter("registerButton")!=null){
-//            session.createTable();
+            session.createTable();
             session.register(username, password);
             request.setAttribute("username", username);
             request.getRequestDispatcher("RegisterSuccessful.jsp").forward(request, response);
