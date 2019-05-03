@@ -38,20 +38,17 @@ public class LoginServlet extends HttpServlet {
         if(request.getParameter("loginButton")!=null){
             
             if(session.login(username, password)){
-                //shopping page
+                request.setAttribute("username", username);
+                request.getRequestDispatcher("LoginSuccessful.jsp").forward(request, response);
             }else{
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/LoginAgain.jsp");
                 dispatcher.forward(request, response);
             }
         }else if(request.getParameter("registerButton")!=null){
-            session.createTable();
+//            session.createTable();
             session.register(username, password);
-            pw.println("<!DOCTYPE HTML PUBLIC " +
-                   "-//W3C//DTD HTML 4.0 Transitional//EN"  + ">\n" +
-                           "<HTML>\n" + "<HEAD>\n" + "</HEAD>\n" + "<BODY>\n" +
-                           "<H1>register successful" +"</H1>\n" +
-                           "<P> "+"</P>\n"+
-                           "</BODY>\n</HTML>\n");
+            request.setAttribute("username", username);
+            request.getRequestDispatcher("RegisterSuccessful.jsp").forward(request, response);
         }
         
     }
