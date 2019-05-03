@@ -5,7 +5,16 @@
  */
 package bean;
 
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
 
@@ -19,8 +28,10 @@ public class ShoppingBean {
 
     private ArrayList<Book> cartList;
     
+    
     public ShoppingBean(){
         this.cartList=new ArrayList<>();
+        
     }
     
     public ArrayList<Book> getCartList(){
@@ -81,5 +92,6 @@ public class ShoppingBean {
            total+=b.totalPrice;
        return total;
    }
-
+   
+   
 }
